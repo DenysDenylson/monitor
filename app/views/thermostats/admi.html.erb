@@ -1,15 +1,9 @@
 <center><h1><b> Admin view</b></h1></center>  
 <a href= "/users/create_user" class="btn btn-success"><b>Create User</b></a>
 <a href="<%= report_thermostat_path %> " class="btn btn-success active"><b>Report</b></a>
-<%= form_tag '/admi', :method => 'get' do %>
-    <div class= "field">
-      <h3 class = "tex-info"> <%= label_tag "Search"%></h3><br>
-      <%= text_field_tag :search %>
-    </div>
-    <div class= "actions">
-      <%= submit_tag "search" %>
-     </div>  
-<% end %>
+<a href="/thermostat_models/" class="btn btn-primary"><b>Create Model Thermostato</b></a>
+
+
  <h1><b>USERS</b></h1>
       <table class="table table-striped"><thead>
           <tr class="info">
@@ -59,6 +53,16 @@
 
 
 <h1><b>THERMS</b></h1>
+<%= form_tag '/admi', :method => 'get' do %>
+    <div class= "field">
+      <h3 class = "tex-info"> <%= label_tag "Search"%></h3><br>
+      <%= text_field_tag :search, "modelo" %>
+    </div>
+
+    <div class= "actions">
+      <%= submit_tag "search" %>
+     </div>  
+<% end %>
 <br>
   
     <table class="table"><thead>
@@ -66,6 +70,7 @@
         <td><b>#User</b></td>
         <td><b>Email</b></td>
         <td><b>Serial</b></td>
+        <td><b>modelo</b></td>
         <td><b>Temperature</b> </td>
         <td><b>Humidity</b> </td>
         <td><b>Energy</b></td>
@@ -83,6 +88,7 @@
             <% @users=User.find(thermostat.user_id) %>
             <td><%= @users.email %></td>  
             <td><%= thermostat.serial %></td>
+            <td><%= thermostat.modelo %></td>
             <td><%= thermostat.temperature %></td>
             <td><%= thermostat.humidity %></td>
             <td><%= thermostat.energy %></td>

@@ -118,8 +118,8 @@ end
     
     if current_user.role != "simple"
       if params[:search]
-        @users = User.search(params[:search])
-        @thermostats = Thermostat.all
+        @users = User.all
+        @thermostats = Thermostat.where(:modelo => params[:search])
         @locations = Location.all
         @issues = Issue.all
       else
@@ -189,6 +189,7 @@ end
   def create
   @thermostat = Thermostat.new(thermostat_params)
   @thermostat.default_temperature=@thermostat.temperature
+  @thermostat.modelo="modelo1"
    @thermostat.user_id=current_user.id
     @thermostat.energy = 0
     @thermostat.humidity = 0

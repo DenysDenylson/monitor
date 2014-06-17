@@ -9,13 +9,13 @@
   <strong>Address:</strong>
   <%= @location.address %>
 </p>
-
 <center><h1><b> Listing thermostats</b></h1></center>
 
 
   <table class="table table-striped "><thead>
       <tr class="info">
         <th>Serial</th>
+        <th>Model</th>
         <th>Temperature</th>
         <th>Humidity</th>
         <th>Energy</th>
@@ -39,11 +39,13 @@
           <% if current_user.id == thermostat.user_id  && @location.id == thermostat.location_id%>
           <%if thermostat.history_thermostats.last != nil%>
              <td><%= thermostat.serial %></td>
+             <td><%= thermostat.modelo %></td>
              <td><%= thermostat.history_thermostats.last.temperature %></td>
              <td><%= thermostat.history_thermostats.last.humidity%></td>
              <td><%= thermostat.history_thermostats.last.energy %></td>
           <%else%>
              <td><%= thermostat.serial %></td>
+             <td><%= thermostat.modelo %></td>
              <td><%= thermostat.temperature %></td>
              <td><%= thermostat.humidity%></td>
              <td><%= thermostat.energy %></td>

@@ -1,5 +1,7 @@
 ThermMonitor::Application.routes.draw do
 
+  resources :thermostat_models
+
   resources :authentications
   devise_for :users, path_names: {sign_in: "login"},
                         controllers: {omniauth_callbacks: "authentications", registrations: "registrations"}
@@ -62,7 +64,8 @@ ThermMonitor::Application.routes.draw do
    get '/thermostats/graphic/:id' => 'thermostats#graphic'
    get '/schedules/index/:thermostat_id/alarms/new' => 'alarms#new'
    post '/schedules/index/:thermostat_id/alarms/new ' => 'alarms#create'
-    
+   
+   get '/thermostat_models/index' => 'thermostat_models#index' 
 
   
 
